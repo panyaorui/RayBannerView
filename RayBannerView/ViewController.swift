@@ -17,8 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var imag: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        bannerView.address = .Web(["http://img0.ph.126.net/SeZND7sJY2E9817aqyiF9Q==/6608636628980965995.jpg","http://img0.ph.126.net/Gqoi8jy24MIqewWmUNUVcA==/639792622080629406.jpg","http://img1.ph.126.net/tWT4rtsPXrsoPyVrjvP4uQ==/1120551882302603980.jpg"]);
-      //  bannerView.address = .Local(["1","2","3","4"]);
+     //   bannerView.address = .Web(["http://img0.ph.126.net/SeZND7sJY2E9817aqyiF9Q==/6608636628980965995.jpg","http://img0.ph.126.net/Gqoi8jy24MIqewWmUNUVcA==/639792622080629406.jpg","http://img1.ph.126.net/tWT4rtsPXrsoPyVrjvP4uQ==/1120551882302603980.jpg"]);
+        bannerView.address = .Local(["1","2","3"]);
         bannerView.currentColor = UIColor.blueColor();
        // self.imag.sd_setImageWithURL(NSURL(string: "http://img0.ph.126.net/SeZND7sJY2E9817aqyiF9Q==/6608636628980965995.jpg"), placeholderImage: UIImage(named: "1"));
     }
