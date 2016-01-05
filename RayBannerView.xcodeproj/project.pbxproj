@@ -16,6 +16,8 @@
 		71A15BF21C321CCE00875960 /* RayBannerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A15BF11C321CCE00875960 /* RayBannerViewTests.swift */; };
 		71A15BFD1C321CCE00875960 /* RayBannerViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A15BFC1C321CCE00875960 /* RayBannerViewUITests.swift */; };
 		71A15C0C1C32224C00875960 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A15C0B1C32224C00875960 /* BannerView.swift */; settings = {ASSET_TAGS = (); }; };
+		71D5AE481C3B927300AFF4B3 /* RayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D5AE461C3B927300AFF4B3 /* RayViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		71D5AE491C3B927300AFF4B3 /* RayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71D5AE471C3B927300AFF4B3 /* RayViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		71A15BFC1C321CCE00875960 /* RayBannerViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RayBannerViewUITests.swift; sourceTree = "<group>"; };
 		71A15BFE1C321CCE00875960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71A15C0B1C32224C00875960 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerView.swift; path = RayBannerView/BannerView.swift; sourceTree = "<group>"; };
+		71D5AE461C3B927300AFF4B3 /* RayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RayViewController.swift; sourceTree = "<group>"; };
+		71D5AE471C3B927300AFF4B3 /* RayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RayViewController.xib; sourceTree = "<group>"; };
 		93CA339531717E9D539C96B7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DE33D31C059759792BAAC5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +119,8 @@
 				71A15BE51C321CCE00875960 /* LaunchScreen.storyboard */,
 				71A15BE81C321CCE00875960 /* Info.plist */,
 				7108C9991C34CE4D002D34FD /* RayBannerView-Bridging-Header.h */,
+				71D5AE461C3B927300AFF4B3 /* RayViewController.swift */,
+				71D5AE471C3B927300AFF4B3 /* RayViewController.xib */,
 			);
 			path = RayBannerView;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71A15BE71C321CCE00875960 /* LaunchScreen.storyboard in Resources */,
+				71D5AE491C3B927300AFF4B3 /* RayViewController.xib in Resources */,
 				71A15BE41C321CCE00875960 /* Assets.xcassets in Resources */,
 				71A15BE21C321CCE00875960 /* Main.storyboard in Resources */,
 			);
@@ -346,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71A15BDF1C321CCE00875960 /* ViewController.swift in Sources */,
+				71D5AE481C3B927300AFF4B3 /* RayViewController.swift in Sources */,
 				71A15BDD1C321CCE00875960 /* AppDelegate.swift in Sources */,
 				71A15C0C1C32224C00875960 /* BannerView.swift in Sources */,
 			);

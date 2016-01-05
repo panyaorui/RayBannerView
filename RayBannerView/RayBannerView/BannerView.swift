@@ -41,7 +41,7 @@ class BannerView: UIView,UIScrollViewDelegate {
     /* 公开属性*/
     
     var delegate:BannerViewDelegate?;
-    
+    var controllers = [UIViewController]();
      /** 图片名称或者地址数组*/
     var address:BannerViewAddress<[String]>?{
         didSet{
@@ -187,11 +187,20 @@ class BannerView: UIView,UIScrollViewDelegate {
     func didSelset(tap:UITapGestureRecognizer){
         if let d = self.delegate,let view = tap.view{
              d.clicked(view.tag)
+        }else if let view = tap.view,let controller = self.getCurrentController(){
+            
+            if(controllers.count > view.tag){
+                if let navigation = controller.navigationController{
+                    navigation.pushViewController(controllers[view.tag], animated: true);
+                }else{
+                    controller.presentViewController(self.controllers[view.tag], animated: true, completion: nil);
+                }
+            }
+            
         }
     }
     
     ////////////////////////////// UIScrollViewDelegate //////////////////////////////
-
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let page:Int = Int(scrollview.contentOffset.x / self.width);
         if(page == 0){
@@ -207,5 +216,17 @@ class BannerView: UIView,UIScrollViewDelegate {
         let p:Int = Int(scrollview.contentOffset.x / self.width);
         self.pageControl.currentPage = p-1;
     }
-  
+    
+    /**获取当前view的Viewcontroller*/
+    func getCurrentController()->UIViewController?{
+        for var next:UIView? = self.superview;next != nil; next = next!.superview{
+            print(next);
+            let responder:UIResponder = next!.nextResponder()!;
+            if(responder.isKindOfClass(UIViewController.classForCoder())){
+                return responder as? UIViewController;
+            }
+        }
+        return nil;
+    }
+    
 }
