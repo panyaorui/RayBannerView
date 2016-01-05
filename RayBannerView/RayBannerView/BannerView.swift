@@ -9,6 +9,10 @@
 import UIKit
 import SDWebImage
 
+protocol BannerViewDelegate{
+    func clicked(index:Int);
+}
+
 enum BannerViewAddress<Array> {
     case Web(Array);
     case Local(Array);
@@ -35,6 +39,8 @@ enum BannerViewAddress<Array> {
 class BannerView: UIView,UIScrollViewDelegate {
     
     /* 公开属性*/
+    
+    var delegate:BannerViewDelegate?;
     
      /** 图片名称或者地址数组*/
     var address:BannerViewAddress<[String]>?{
@@ -84,9 +90,21 @@ class BannerView: UIView,UIScrollViewDelegate {
     private var timer:NSTimer?;
     
     
+    override init(frame: CGRect) {
+        super.init(frame: frame);
+        self.initData();
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder);
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib();
+        self.initData();
+    }
+    
+    private func initData(){
         self.backgroundColor = UIColor.orangeColor();
         self.width = self.frame.size.width;
         self.height = self.frame.size.height;
@@ -94,10 +112,14 @@ class BannerView: UIView,UIScrollViewDelegate {
         self.initScrollView();
         self.initPageControl();
         self.addTimer();
+
     }
     
     /** 初始化ScrollView*/
     private func initScrollView(){
+        //使view接受用户点击事件
+        self.userInteractionEnabled = true;
+        
         scrollview = UIScrollView(frame: CGRectMake(0, 0, self.width, self.height));
         //scrollview.backgroundColor = UIColor.blueColor();
         scrollview.contentSize = CGSize(width: self.width, height: self.height);
@@ -121,6 +143,7 @@ class BannerView: UIView,UIScrollViewDelegate {
     private func addSubImageView(){
         self.scrollview.contentSize = CGSize(width: self.width  * CGFloat(self.images!.count), height: self.height);
         for var index = 0; index < self.images!.count;++index{
+            print(index);
             let name:String = self.images!.objectAtIndex(index) as! String;
 
             let imageView:UIImageView = UIImageView(frame: CGRectMake(self.width * CGFloat(index), 0, self.width, self.height));
@@ -131,6 +154,10 @@ class BannerView: UIView,UIScrollViewDelegate {
                 let image:UIImage = UIImage(named: name)!;
                 imageView.image = image;
             }
+            imageView.tag = index - 1;
+            imageView.userInteractionEnabled = true;
+            let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "didSelset:");
+            imageView.addGestureRecognizer(tap);
             self.scrollview.addSubview(imageView);
         }
         self.scrollview.contentOffset = CGPointMake(self.width, 0);
@@ -154,6 +181,13 @@ class BannerView: UIView,UIScrollViewDelegate {
             current = 0;
         }
         self.pageControl.currentPage = current;
+    }
+    
+    /** 图片单击事件*/
+    func didSelset(tap:UITapGestureRecognizer){
+        if let d = self.delegate,let view = tap.view{
+             d.clicked(view.tag)
+        }
     }
     
     ////////////////////////////// UIScrollViewDelegate //////////////////////////////
